@@ -7,7 +7,7 @@ import { createPage, getPages } from "./actions";
 export default function DashboardPage() {
   const [title, setTitle] = useState("");
   const [pages, setPages] = useState<any[]>([]);
-
+  const router = useRouter();
   async function getPagesList() {
     const res = await getPages();
     setPages(res);
@@ -40,7 +40,12 @@ export default function DashboardPage() {
 
       <ul>
         {pages.map((page) => (
-          <li key={page.id}>{page.title}</li>
+          <li
+            key={page.id}
+            onClick={() => router.push(`/dashboard/pages/${page.id}`)}
+          >
+            {page.title}
+          </li>
         ))}
       </ul>
     </div>

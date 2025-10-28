@@ -28,3 +28,20 @@ export async function createPage(title: string){
     })
     return page
 }
+
+export async function getPageContent(id:string){
+    const session = await getServerSession(authOptions);
+    if(!session) throw new Error('Not authenticated')
+    
+    return await prisma.page.findUnique({where:{id}})
+}
+
+export async function updatePage(id:string,content:string){
+    const session = await getServerSession(authOptions)
+    if(!session) throw new Error('Not authenticated')
+
+    return await prisma.page.update({
+        where: {id},
+        data: {content}
+    })
+}
