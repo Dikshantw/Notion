@@ -21,13 +21,19 @@ export default function PageDetails() {
     setSaving(false);
   }
   return (
-    <div>
+    <div className="max-w-2xl mx-auto mt-10">
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        className="w-full border p-2 rounded min-h-[300px]"
         placeholder="Start typing..."
       ></textarea>
-      <button onClick={handleUpdate}>{saving ? "Saving..." : "Save"}</button>
+      <button
+        onClick={handleUpdate}
+        className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
+      >
+        {saving ? "Saving..." : "Save"}
+      </button>
     </div>
   );
 }

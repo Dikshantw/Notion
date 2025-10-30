@@ -26,22 +26,26 @@ export default function LogInpage() {
     }
   }
   return (
-    <div>
-      <h2>Log in</h2>
-      <form onSubmit={handleLogin}>
+    <div className="max-w-sm mx-auto mt-20">
+      <h2 className="text-2xl font-bold mb-4">Log in</h2>
+      <form onSubmit={handleLogin} className="flex flex-col gap-2">
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
+          className="border p-2 rounded"
         />
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          className="border p-2 rounded"
         />
-        <button type="submit">Log In</button>
+        <button type="submit" className="bg-blue-600 text-white p-2 rounded">
+          Log In
+        </button>
         {error && <p className="text-red-500">{error}</p>}
       </form>
     </div>
